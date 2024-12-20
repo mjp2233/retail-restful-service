@@ -1,32 +1,67 @@
 package com.retail.services;
 
+import java.math.BigInteger;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import com.retail.dao.ProductPricingRepository;
+import com.retail.objects.ProductPrice;
+import com.retail.objects.ProductResponse;
 
 
 @Service
 public class MyRetailService  {
 	Logger logger = LoggerFactory.getLogger(MyRetailService.class);
 
-    private static final String myRetail_url
-  = "https://redsky-uat.perf.target.com/redsky_aggregations/v1/redsky/case_study_v1?key=3yUxt7WltYG7MFKPp7uyELi1K40ad2ys&tcin=13860428";
+    @Autowired
+    ProductPricingRepository productPricingRepository;
 
-    public String getPricingInformationForId(String productId) {
-        logger.info("getPricingInformationForId with productId: {}", productId);
+    @Value("${service.url}")
+    private String myRetailURL;
+
+    public String getProductTitleForId(BigInteger productId) {
+        logger.info("getProductInformationForId with productId: {}", productId);
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<String> response
-        = restTemplate.getForEntity(myRetail_url, String.class);
+        String url = myRetailURL + "&tcin=" + productId;
+   
+        ResponseEntity<ProductResponse> response
+        = restTemplate.getForEntity(url, ProductResponse.class);
+        
+        if(response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
+            logger.info(response.getBody().getData().getProduct().getItem().getProductDescription().getTitle());
 
-        //Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
+            return response.getBody().getData().getProduct().getItem().getProductDescription().getTitle();
+        } else {
+            logger.error("Unsuccessful call for productId {} with status code: {}", productId, response.getStatusCode());
 
-        System.out.println(response.getBody());
-        return response.getBody();
+        }
+        return "";
     }
+
+    
+    /*
+     * Returns the Current Pricing information based on product Id
+     * @param tcin Integer value for the tcin (product) number in productPricing database
+     * @return currentPrice object with value and currency_code representing price
+     */
+    public ProductPrice getCurrentProductPrice(BigInteger tcin) {
+        logger.info("getCurrentProductPrice for tcin: {}", tcin);
+
+        ProductPrice productPrice = productPricingRepository.findByTcin(tcin);
+
+        return productPrice;
+
+    }
+
 
 }
