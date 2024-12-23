@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.retail.objects.ProductPrice;
-import com.retail.objects.ProductPriceResponse;
+import com.retail.objects.ProductPriceStructured;
 import com.retail.services.MyRetailService;
 
 
@@ -47,7 +47,7 @@ public class ProductControllerTest {
         Mockito.when(myRetailService.getCurrentProductPrice(productId))
                 .thenReturn(expectedPrice);
 
-        ProductPriceResponse response = productController.getProductById(productIdL);
+        ProductPriceStructured response = productController.getProductById(productIdL);
 
         assertEquals(productId, response.getId());
         assertEquals(expectedTitle, response.getName());
