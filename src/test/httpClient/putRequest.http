@@ -1,0 +1,11 @@
+PUT http://localhost:8080/myretailservice/product/13860428
+Content-Type: application/json
+
+{
+  "id": 13860428,
+  "name": "The Big Lebowski (Blu-ray) (Widescreen)",
+  "current_price": {
+    "value": 13.99,
+    "currency_code": "USD"
+  }
+}

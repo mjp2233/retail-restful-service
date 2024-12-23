@@ -20,7 +20,10 @@ Before running, MongoDB must be installed locally. Test data will be created and
 Run gradlew via the terminal to start the application: 
 `./gradlew bootRun`
 
-Hit endpoint on localhost: 
+Hit GET endpoint on localhost: 
+`http://localhost:8080/myretailservice/product/13860428`
+
+Run PUT endpoint on localhost via `src\test\httpClient\putRequest.http` (install REST Client Extension for easilyu running .http files), update current_price.value to be updated in the database: 
 `http://localhost:8080/myretailservice/product/13860428`
 
 
@@ -31,6 +34,9 @@ Run tests: `./gradlew test`
 
 - [Spring Data MongoDB](https://docs.spring.io/spring-data/mongodb/reference/index.html)
 - [Spring Mongo Data Repositories](https://docs.spring.io/spring-data/mongodb/reference/mongodb/repositories/repositories.html)
+- [MongoDB Documentation](https://www.mongodb.com/docs/manual/reference/)
+   - [Update Operators](https://www.mongodb.com/docs/manual/reference/operator/update/)
+   - [Query Operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
 
 
 

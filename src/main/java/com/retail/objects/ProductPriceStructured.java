@@ -3,10 +3,13 @@ package com.retail.objects;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public class ProductPriceResponse {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class ProductPriceStructured {
 
     private BigInteger id;
     private String name;
+    @JsonProperty("current_price")
     private CurrentPrice current_price;
 
 
@@ -39,10 +42,10 @@ public class ProductPriceResponse {
 
     public class CurrentPrice {
 
+        @JsonProperty("value")
         private BigDecimal value;
+        @JsonProperty("currency_code")
         private String currency_code;
-
-
 
         public String getCurrencyCode() {
             return currency_code;
@@ -62,6 +65,9 @@ public class ProductPriceResponse {
 
     }
 
-    
+    @Override
+    public String toString() {
+        return "ProductPriceStructured [id=" + id + ", name=" + name + ", current price value=" + current_price.getValue() + "]";
+    }
 
 }
