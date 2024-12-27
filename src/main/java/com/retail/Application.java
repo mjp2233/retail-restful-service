@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import com.mongodb.client.MongoClients;
 import com.retail.objects.ProductPrice;
@@ -43,4 +45,8 @@ public class Application {
 		logger.info("ProductPricing records initialized");
 	}
 	
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.retail.objects.ProductPrice;
 import com.retail.objects.ProductPriceStructured;
-import com.retail.objects.ProductPriceStructured;
 import com.retail.services.MyRetailService;
 
 @RestController
@@ -46,7 +45,7 @@ public class ProductController {
 		logger.info(productPriceRequest.toString());
 		myRetailService.updateProductPrice(productPriceRequest);
 
-		return "Successfully updated: " + id;
+		return "Successfully updated price for TCIN: " + id;
 	}
 
 }

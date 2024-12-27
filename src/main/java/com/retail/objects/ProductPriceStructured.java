@@ -9,8 +9,9 @@ public class ProductPriceStructured {
 
     private BigInteger id;
     private String name;
+
     @JsonProperty("current_price")
-    private CurrentPrice current_price;
+    private CurrentPrice currentPrice;
 
 
     public BigInteger getId() {
@@ -26,10 +27,10 @@ public class ProductPriceStructured {
         this.name = name;
     }
     public CurrentPrice getCurrentPrice() {
-        return current_price;
+        return currentPrice;
     }
-    public void setCurrentPrice(CurrentPrice current_price) {
-        this.current_price = current_price;
+    public void setCurrentPrice(CurrentPrice currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
 
@@ -44,15 +45,16 @@ public class ProductPriceStructured {
 
         @JsonProperty("value")
         private BigDecimal value;
+
         @JsonProperty("currency_code")
-        private String currency_code;
+        private String currencyCode;
 
         public String getCurrencyCode() {
-            return currency_code;
+            return currencyCode;
         }
 
-        public void setCurrencyCode(String currency_code) {
-            this.currency_code = currency_code;
+        public void setCurrencyCode(String currencyCode) {
+            this.currencyCode = currencyCode;
         }
 
         public BigDecimal getValue() {
@@ -67,7 +69,7 @@ public class ProductPriceStructured {
 
     @Override
     public String toString() {
-        return "ProductPriceStructured [id=" + id + ", name=" + name + ", current price value=" + current_price.getValue() + "]";
+        return "ProductPriceStructured [id=" + id + ", name=" + name + ", current price value=" + currentPrice.getValue() + "]";
     }
 
 }
