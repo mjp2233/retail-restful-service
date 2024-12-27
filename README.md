@@ -15,7 +15,7 @@ Compile/Tested with:
 
 
 # Running the Service
-Before running, MongoDB must be installed locally. Test data will be created and inserted on start-up.
+Before running, MongoDB must be installed locally. Test data for ids 13860428 and 54456119 will be created and inserted in database on start-up.
 
 Run gradlew via the terminal to start the application: 
 `./gradlew bootRun`
@@ -40,3 +40,16 @@ Run tests: `./gradlew test`
 
 
 
+# Local Testing Results:
+
+## Response from GET request
+
+![Successful local get call](image.png)
+
+![Database](image-1.png)
+
+## PUT Request to Update Database
+
+![alt text](image-3.png)
+
+![alt text](image-2.png)
