@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.retail.dao.ProductPricingRepository;
@@ -45,9 +46,9 @@ public class MyRetailService  {
                 return response.getBody().getData().getProduct().getItem().getProductDescription().getTitle();
             }
             return "";
-        } catch (Exception e) {
+        } catch (RestClientException e) {
             logger.error("Unsuccessful call for productId {} with error message code: {}", productId, e.getMessage());
-            return "The Big Lebowski (Blu-ray) (429 Status Default Value)";
+            return "Default Title";
         }
     }
 

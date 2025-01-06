@@ -42,7 +42,7 @@ public class ProductController {
 	@PutMapping("/product/{id}")
 	public String putProductById(@RequestBody ProductPriceStructured productPriceRequest, @PathVariable long id) {
 		logger.info("putProductById with ID: {}", id);
-		logger.info(productPriceRequest.toString());
+		
 		myRetailService.updateProductPrice(productPriceRequest);
 
 		return "Successfully updated price for TCIN: " + id;
