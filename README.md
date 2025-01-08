@@ -53,3 +53,23 @@ Run tests: `./gradlew test`
 ![alt text](image-3.png)
 
 ![alt text](image-2.png)
+
+
+# Containarizing/Docker
+
+- Reference: [Spring Boot Docker](https://spring.io/guides/gs/spring-boot-docker)
+
+
+Run command for Docker Build: 
+`docker build --build-arg JAR_FILE=build/libs/retail-restful-service-1.0.0.jar -t docker/myretail-restful-service . `
+
+Use gradle to build new images:
+`./gradlew bootBuildImage --imageName=docker/myretail-restful-service`
+
+## Docker Compose
+- [Docker Compose Reference](https://geshan.com.np/blog/2023/03/mongodb-docker-compose/) - MongoDB & Springboot Containers
+
+Create  `docker-compose.yml` with separate container configs, making sure the MongoDB in the Docker file is the same as one specified the `application.properties`
+
+Run `docker-compose up` to start up the containers
+Run `docker-compose down` to stop them (or CTR+C)
