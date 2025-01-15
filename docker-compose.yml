@@ -4,8 +4,6 @@ services:
     container_name: mongodb-container
     ports:
       - "27017:27017"
-    volumes:
-      - ./mongo-data:/data/db
 
   springboot:
     image: openjdk:21
@@ -15,7 +13,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./build\libs\retail-restful-service-1.0.0.jar:/app.jar
+      - ./build/libs/retail-restful-service-1.0.0.jar:/app.jar
     command: ["java", "-jar", "/app.jar"]
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb-container:27017
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=mongodb-container
