@@ -2,7 +2,6 @@
 
 Internal REST Service to aggregate product data from multiple sources and return it as JSON to the caller.
 
-
 Prerequisites:
    - Java 17 or later ([Installation Instructions](https://www.oracle.com/java/technologies/downloads/#java21))
    - Gradle 7.5+ ([Installation Instructions](https://gradle.org/install/))
