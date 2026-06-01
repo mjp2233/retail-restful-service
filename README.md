@@ -72,3 +72,4 @@ Create  `docker-compose.yml` with separate container configs, making sure the Mo
 
 Run `docker-compose up` to start up the containers
 Run `docker-compose down` to stop them (or CTR+C)
+
