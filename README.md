@@ -58,7 +58,6 @@ Run tests: `./gradlew test`
 
 - Reference: [Spring Boot Docker](https://spring.io/guides/gs/spring-boot-docker)
 
-
 Run command for Docker Build: 
 `docker build --build-arg JAR_FILE=build/libs/retail-restful-service-1.0.0.jar -t docker/myretail-restful-service . `
 
