@@ -12,7 +12,6 @@ Compile/Tested with:
 - Gradle 8.11.1
 - MongoDB 8.0.4
 
-
 # Running the Service
 Before running, MongoDB must be installed locally. Test data for ids 13860428 and 54456119 will be created and inserted in database on start-up.
 
@@ -36,7 +35,6 @@ Run tests: `./gradlew test`
 - [MongoDB Documentation](https://www.mongodb.com/docs/manual/reference/)
    - [Update Operators](https://www.mongodb.com/docs/manual/reference/operator/update/)
    - [Query Operators](https://www.mongodb.com/docs/manual/reference/operator/query/)
-
 
 
 # Local Testing Results:
